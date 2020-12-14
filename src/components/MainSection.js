@@ -76,6 +76,16 @@ import Footer from './Footer'
        return todo.completed ? count + 1 : count
      }, 0)
 
+     /**
+      * TodoItem에서 MainSection으로 넘어온 후 이쪽을 확인한다.
+      * TodoItem에 넘기고 있는 값으로 key, todo, ...actions 가 있음을 확인한다.
+      * TodoItem으로 넘겨야할 4가지의 프로퍼티에는 todo, editTodo, deleteTodo, completeTodo가 있고, 이 4개는 필수적으로 전달해야 하였다.
+      * 그렇다면 ...actions에 editTodo, deleteTodo, completeTodo가 있다고 생각하여야한다.
+      * actions의 내용을 확인하기 위해 MainSection의 변수 혹은 프로퍼티를 확인하자.
+      *
+      * render() 함수의 내부에서 const { todos, actions } = this.props 를 통해 actions는 this.props에서 값을 가져왔다는 것을 확인 가능.
+      * propTypes에서 actions를 확인할 수 있으므로, MainSection을 렌더링하는 App자체를 확인할 필요가 있다.
+      */
      return (
        <section className="main">
          {this.renderToggleAll(completedCount)}

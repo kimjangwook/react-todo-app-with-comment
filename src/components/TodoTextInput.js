@@ -1,6 +1,26 @@
 import React, {Component, PropTypes} from 'react'
 import classnames from 'classnames'
 
+/**
+ * class TodoTextInput이 상속하고 있는 Component를 확인해보면
+ * node_modules\react\lib\ReactComponent.js 인것을 확인 가능
+ * ReactComponent의 prototype으로는 setState라는 함수가 존재함을 확인할 수 있다.
+ *
+ * ReactComponent.js의 setState 함수 위쪽의 설명을 살펴보자.
+ *   (생략)
+ *   You should treat `this.state` as immutable.
+ *   There is no guarantee that `this.state` will be immediately updated, so
+ *   accessing `this.state` after calling this method may return the old value.
+ *   (생략)
+ * 컴포넌트(this)의 state를 immutable하게 다룰 수 있음이 명시되어 있다.
+ * 또한 setState 호출 직후 새로운 값이 즉시 this.state에 반영될 것이라는 보장은 없다는 것을 알 수 있다.
+ * 왜냐하면 setState는 비동기적으로 이루어지기 때문이다.
+ *
+ * 하단 링크를 참고하면, 모든 컴포넌트에는 state가 존재하고, setState함수는 state의 값을 업데이트 하기 위한 함수라는 것을 알 수 있다.
+ * 참고 링크 1: https://ko.reactjs.org/docs/state-and-lifecycle.html
+ * 참고 링크 2: https://ko.reactjs.org/docs/faq-state.html
+ *
+ */
 export default class TodoTextInput extends Component {
   static propTypes = {
     onSave: PropTypes.func.isRequired,

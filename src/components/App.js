@@ -64,6 +64,9 @@ class App extends Component {
     this.setState({todos})
   }
 
+  /**
+   * actions에 필요로했던 editTodo, deleteTodo, completeTodo가 있음을 확인 가능.
+   */
   actions = {
     addTodo: this.addTodo,
     deleteTodo: this.deleteTodo,
